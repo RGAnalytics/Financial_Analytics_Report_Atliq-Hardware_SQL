@@ -113,8 +113,8 @@ Sales link to customers and products on their codes, and to prices on product co
 
 ## Report output
 
-- **SQL workings:** [Finance_Analytics.sql](sql/Finance_Analytics.sql), with all queries in run order and comments on each step
-- **Final report:** [Croma_2021_AllTransactionReport.csv](results/Croma_2021_AllTransactionReport.csv), 3,006 rows covering every product and month for Croma India in FY2021
+- **SQL workings:** [Finance_Analytics.sql](1_sql/Finance_Analytics.sql), with all queries in run order and comments on each step
+- **Final report:** [Croma_2021_AllTransactionReport.csv](2_results/Croma_2021_AllTransactionReport.csv), 3,006 rows covering every product and month for Croma India in FY2021
  
 ## Summary
 
