@@ -1,10 +1,23 @@
-# SQL_Financial_Analytics_Report
-Generating financial report for Atliq hardware (Imaginary) as tasked by the product owner of the company. 
+# Gross Sales Report for AtliQ Hardware (SQL)
 
-Full documentation can be found here:https://www.notion.so/Atliq-Hardware-169f74a7e49d808da9c2c85a49781edc?pvs=4
+Generating a financial report for AtliQ Hardware as tasked by the product owner of the company.
 
-Generate a report of individual product sales (aggregated on a monthly basis at the product code level) for Croma India customers for fiscal year 2021.
-# Business Model
+> **Course project.** AtliQ Hardware is a fictional company used in the Codebasics SQL course, and the dataset comes from that course. The queries, the user-defined functions and the write-up in this repo are my own work.
+
+**Tool:** MySQL &nbsp;|&nbsp; **Techniques:** joins, user-defined functions, fiscal-year date logic
+
+Full documentation: [Notion write-up](https://www.notion.so/Atliq-Hardware-169f74a7e49d808da9c2c85a49781edc?pvs=4)
+
+## Business question
+
+The product owner wants to understand sales to **Croma India** for **fiscal year 2021** (September 2020 to August 2021). The report answers two questions:
+
+1. **Which products did Croma India buy each month, and what was their gross sales value?**
+   A report of individual product sales, aggregated monthly at the product code level.
+2. **How much did Croma India spend in total each month?**
+   A monthly view of total gross sales to Croma India.
+
+## Business Model
 
 - Atliq Hardware - Let us understand the  domain before generating the report
     
@@ -19,7 +32,8 @@ Generate a report of individual product sales (aggregated on a monthly basis at 
     - Brick & Mortar : Croma, Best Buy, etc
     - E-Commerce: Amazon, Flipkart
 
-## Understanding Concept of Financial Statements (P&L)
+<details>
+<summary><b>Understanding Concept of Financial Statements (P&L)</b></summary>
 
 - Gross Price - Total price of a product before any discounts or deduction.
 **Example:** Atliq Hardware sells a laptop for ₹50,000.
@@ -60,8 +74,9 @@ Generate a report of individual product sales (aggregated on a monthly basis at 
     **Formula: Gross Margin % = (Gross Margin ÷ Net Sales) × 100**
     
     **Example: Gross Margin % = (₹13,000 ÷ ₹43,000) × 100 ≈ 30.23%**
+</details>
 
-  ## Task
+ ## Task
 
 1. Report 1- The report should have the following fields
     - Month
@@ -74,6 +89,13 @@ Generate a report of individual product sales (aggregated on a monthly basis at 
     - Month
     - Total gross sales amount to Croma India in this month
   
+## Data model
+
+Sales link to customers and products on their codes, and to prices on product code plus fiscal year.
+
+<img width="958" alt="Data model" src="https://github.com/user-attachments/assets/9532b31b-9a38-469c-b652-8e0c8443df72" />
+
+ 
 ## Techniques and Functions Used
 
 - To focus exclusively on **Croma**, customer codes were extracted from the `dim_customer` table by applying a filter that identifies customers whose names contain "Croma" and are part of the **Indian market**. The SQL `LIKE` operator was used for pattern matching, ensuring flexibility in identifying relevant records.
@@ -88,6 +110,11 @@ Generate a report of individual product sales (aggregated on a monthly basis at 
 - **Joins**
     - Data from the `fact_sales_monthly` table was joined with the `dim_product` table to include product names and variants.
     - A join with the `fact_gross_price` table provided the gross price per item and calculated the total gross price for each transaction.
+
+## Report output
+
+- **SQL workings:** [Finance_Analytics.sql](Finance_Analytics.sql), with all queries in run order and comments on each step
+- **Final report:** [Croma_2021_AllTransactionReport.csv](Croma_2021_AllTransactionReport.csv), 3,006 rows covering every product and month for Croma India in FY2021
  
 ## Summary
 
